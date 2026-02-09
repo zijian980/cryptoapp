@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d02bc817-8d05-4fe1-b664-954fe06725b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coins/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/coins/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coins/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/coins/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/CoinOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/CoinOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/TrendingCoins.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/TrendingCoins.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/fallback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/fallback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/coingecko.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/coingecko.actions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +103,7 @@
       <workItem from="1770397441951" duration="825000" />
       <workItem from="1770398337386" duration="46000" />
       <workItem from="1770527375025" duration="9876000" />
-      <workItem from="1770608282752" duration="7567000" />
+      <workItem from="1770608282752" duration="12383000" />
     </task>
     <servers />
   </component>

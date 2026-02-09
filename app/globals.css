@@ -636,16 +636,16 @@
       @apply bg-dark-400! max-w-sm sm:max-w-md md:max-w-2xl mx-auto;
     }
 
-    .cmd-input {
-      @apply bg-dark-500!;
-
-      input {
-        @apply placeholder:text-purple-100!;
-      }
+    .list {
+      @apply bg-dark-500;
     }
 
-    .list {
-      @apply bg-dark-500 max-h-100;
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .heading {
