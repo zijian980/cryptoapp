@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { searchCoins } from '@/lib/coingecko.actions';
+// @ts-ignore
 import { SearchCoin } from '@/type.d';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
