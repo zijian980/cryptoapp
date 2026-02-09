@@ -9,9 +9,13 @@ import { convertOHLCData } from '@/lib/utils';
 const CandlestickChart = ({
                               children,
                               data,
+                              liveOhlcv,
                               coinId,
                               height = 360,
+                              mode = 'historical',
                               initialPeriod = 'daily',
+                              liveInterval = '1s',
+                              setLiveInterval,
                           }: CandlestickChartProps) => {
     const chartContainerRef = useRef<HTMLDivElement | null>(null);
     const chartRef = useRef<IChartApi | null>(null);
@@ -20,6 +24,12 @@ const CandlestickChart = ({
     const [period, setPeriod] = useState(initialPeriod);
     const [ohlcData, setOhlcData] = useState<OHLCData[]>(data ?? []);
     const [isPending, startTransition] = useTransition();
+
+    useEffect(() => {
+        if (data) {
+            setOhlcData(data);
+        }
+    }, [data]);
 
     const fetchOHLCData = async (selectedPeriod: Period) => {
         try {
@@ -94,23 +104,58 @@ const CandlestickChart = ({
         chartRef.current?.timeScale().fitContent();
     }, [ohlcData, period]);
 
+    useEffect(() => {
+        if (mode === 'live' && liveOhlcv) {
+            setOhlcData((prev) => {
+                const last = prev[prev.length - 1];
+                if (last && last[0] === liveOhlcv[0]) {
+                    return [...prev.slice(0, -1), liveOhlcv];
+                }
+                return [...prev, liveOhlcv];
+            });
+        }
+    }, [liveOhlcv, mode]);
+
     return (
         <div id="candlestick-chart">
             <div className="chart-header">
                 <div className="flex-1">{children}</div>
 
-                <div className="button-group">
-                    <span className="text-sm mx-2 font-medium text-purple-100/50">Period:</span>
-                    {PERIOD_BUTTONS.map(({ value, label }) => (
-                        <button
-                            key={value}
-                            className={period === value ? 'config-button-active' : 'config-button'}
-                            onClick={() => handlePeriodChange(value)}
-                            disabled={isPending}
-                        >
-                            {label}
-                        </button>
-                    ))}
+                <div className="flex items-center gap-4">
+                    {mode === 'live' && setLiveInterval && (
+                        <div className="button-group">
+                            <span className="text-sm mx-2 font-medium text-purple-100/50">
+                                Interval:
+                            </span>
+                            {(['1s', '1m'] as const).map((interval) => (
+                                <button
+                                    key={interval}
+                                    className={
+                                        liveInterval === interval
+                                            ? 'config-button-active'
+                                            : 'config-button'
+                                    }
+                                    onClick={() => setLiveInterval(interval)}
+                                >
+                                    {interval}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+
+                    <div className="button-group">
+                        <span className="text-sm mx-2 font-medium text-purple-100/50">Period:</span>
+                        {PERIOD_BUTTONS.map(({ value, label }) => (
+                            <button
+                                key={value}
+                                className={period === value ? 'config-button-active' : 'config-button'}
+                                onClick={() => handlePeriodChange(value)}
+                                disabled={isPending}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
